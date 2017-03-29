@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-02-28 16:35:29
+/* Smarty version 3.1.30, created on 2017-03-29 18:32:24
   from "C:\wamp\www\micro_blog_Smarty\vue\haut.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58b598c1dcc4a8_00964617',
+  'unifunc' => 'content_58dbe198952aa3_74464221',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ba490b83cfde2f883b7ce450f7fb4fc08f81ca25' => 
     array (
       0 => 'C:\\wamp\\www\\micro_blog_Smarty\\vue\\haut.tpl',
-      1 => 1488296124,
+      1 => 1490805141,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58b598c1dcc4a8_00964617 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58dbe198952aa3_74464221 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -35,7 +35,8 @@ function content_58b598c1dcc4a8_00964617 (Smarty_Internal_Template $_smarty_tpl)
     <title>Micro blog</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!--<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <!-- Theme CSS -->
     <link href="css/freelancer.css" rel="stylesheet">
