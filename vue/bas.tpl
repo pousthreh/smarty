@@ -13,9 +13,20 @@
                         <p>3481 Melrose Place
                             <br>Beverly Hills, CA 90210</p>
                     </div>
-                    <div class="footer-col col-md-4">
-                        
-                    </div>
+                    
+                       <div class="footer-col col-md-1 bas">
+							<a href="#" class="icon facebook"></a>
+					   </div>
+						<div class="footer-col col-md-1 bas">
+							<a href="#" class="icon twitter"></a>
+					   </div>
+						<div class="footer-col col-md-1 bas"> 
+							<a href="#" class="icon linkedin"></a>
+					   </div>
+						<div class="footer-col col-md-1 bas">  
+							<a href="#" class="icon google"></a>						
+					   </div>					   
+                    
                     <div class="footer-col col-md-4">
                         <h3>A propos</h3>
                         <p>Micro blog est une application PHP basée sur le thème <a href="https://startbootstrap.com/template-overviews/freelancer/">Freelancer</a>.</p>
