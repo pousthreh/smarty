@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-29 18:32:24
+/* Smarty version 3.1.30, created on 2017-03-29 18:58:10
   from "C:\wamp\www\micro_blog_Smarty\vue\haut.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58dbe198952aa3_74464221',
+  'unifunc' => 'content_58dbe7a29b7c23_07282874',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ba490b83cfde2f883b7ce450f7fb4fc08f81ca25' => 
     array (
       0 => 'C:\\wamp\\www\\micro_blog_Smarty\\vue\\haut.tpl',
-      1 => 1490805141,
+      1 => 1490806675,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58dbe198952aa3_74464221 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58dbe7a29b7c23_07282874 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -39,8 +39,9 @@ function content_58dbe198952aa3_74464221 (Smarty_Internal_Template $_smarty_tpl)
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <!-- Theme CSS -->
-    <link href="css/freelancer.css" rel="stylesheet">
-	<link rel="stylesheet" href="css/cssGeneral.css">
+   <!-- <link href="css/freelancer.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/cssGeneral.css">-->
+	<link href="min/?f=micro_blog_Smarty/css/freelancer.css,micro_blog_Smarty/css/cssGeneral.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">

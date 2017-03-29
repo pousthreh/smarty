@@ -15,8 +15,9 @@
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <!-- Theme CSS -->
-    <link href="css/freelancer.css" rel="stylesheet">
-	<link rel="stylesheet" href="css/cssGeneral.css">
+   <!-- <link href="css/freelancer.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/cssGeneral.css">-->
+	<link href="min/?f=micro_blog_Smarty/css/freelancer.css,micro_blog_Smarty/css/cssGeneral.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
