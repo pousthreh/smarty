@@ -3,18 +3,15 @@ include('includes/connexion.inc.php');
 
 if (isset($_POST['message']) && !empty($_POST['message'])) {
 
-    if (isset($_POST['id']) && !empty($_POST['id'])){
-        $query = 'UPDATE messages SET contenu=(:contenu) WHERE id=(:id)';
+          $maintenant = time();
+
+        $query = 'INSERT INTO messages (contenu,creeLe,user_id) VALUES (?,?,?)';
         $prep = $pdo->prepare($query);
-        $prep->bindValue(':id', $_POST['id']);
-        $prep->bindValue(':contenu', $_POST['message']);
+        $prep->bindValue(1, $_POST['message']);
+        $prep->bindValue(2, $maintenant);
+        $prep->bindValue(3, $id_user);
         $prep->execute();
-    } else {
-        $query = 'INSERT INTO messages (contenu) VALUES (:contenu)';
-        $prep = $pdo->prepare($query);
-        $prep->bindValue(':contenu', $_POST['message']);
-        $prep->execute();
-    }
+
 }
 
 header("Location: index.php");
