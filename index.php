@@ -33,16 +33,16 @@
 
   if(!isset($_GET['id'])){ $smarty->assign('linkId', 'false');  }
 
-  if (isset($selectContenu)){ $smarty->assign('contenuPres', 'true'); }
+  if (isset($selAll)){ $smarty->assign('cnp', 'true'); }
 
   if (isset($_GET['id']) && !empty($_GET['id'])) {
 
-    $selectContenu = $pdo->prepare("SELECT contenu FROM messages WHERE id=?");
-    $selectContenu->bindValue(1, $_GET['id']);
-    $selectContenu->execute();
-    $data = $selectContenu->fetch();
+    $selAll = $pdo->prepare("SELECT contenu FROM messages WHERE id=?");
+    $selAll->bindValue(1, $_GET['id']);
+    $selAll->execute();
+    $data = $selAll->fetch();
     $data = $data['contenu'];
-    $smarty->assign('tab', $data);
+    $smarty->assign('inst', $data);
   }
   // afficher 4 messages par pagee
   $mesParPage = 4;
@@ -50,9 +50,8 @@
 
   // les requet pour la pagination
   $count = $pdo->query('SELECT * FROM messages');
-  $reqAffiche = $pdo->query('SELECT m.*, u.pseudo FROM messages m INNER JOIN utilisateurs u ON m.user_id = u.id ORDER BY m.id DESC LIMIT 4 OFFSET '.$nombre.'');
+  $reqAffiche = $pdo->query('SELECT m.*, pseudo FROM messages m INNER JOIN utilisateurs u ON m.user_id = u.id ORDER BY m.id DESC LIMIT 4 OFFSET '.$nombre.'');
   $reqAffiche->execute();
-
 	//Nous récupérons le nombre des pages dans $rTotal
   $rTotal = $count->rowCount();
 	// nombre de page
@@ -61,23 +60,47 @@
   $mailVerf = '/[a-z0-9_]+@[a-z0-9]+\.[a-z0-9]+/';
   $tweetVerif = '/#([a-z\d-]+)/';
   $verifUrl = '/https?:\/\/[w{3}\.]*[a-z0-9_-]+\.[a-z]{2,3}.*/';
-
-  $MesTab = array();
-
+  $nb=0;
+  $MesTab = [];
 	//boucle pour les insert des contenu
   while($insertion = $reqAffiche->fetch())
   {
-	    if(preg_match_all($mailVerf,$insertion['contenu'],$out)) {
-	      $insertion = preg_replace($mailVerf,'<a href="'.$out[0][0].'">'.$out[0][0].'</a>',$insertion['contenu']);
-	    }else if(preg_match_all($tweetVerif,$insertion['contenu'],$out)) {
-	      $insertion = preg_replace($tweetVerif,'<a href="recherche.php">'.$out[0][0].'</a>',$insertion['contenu']);
-	    }else if(preg_match_all($verifUrl,$insertion['contenu'],$out)){
-	      $insertion = preg_replace($verifUrl,'<a href="'.$out[0][0].'">'.$out[0][0].'</a>',$insertion['contenu']);
+    /*echo "<pre>";
+    print_r ($insertion);
+    echo "</pre>";
+    exit();*/
+    $array=array();
+    $string=$insertion['contenu'];
+  /*  $crpar=$insertion['pseudo'];
+    $creeLe=$insertion['creeLe'];*/
+	    if(preg_match_all($mailVerf,$string,$array,PREG_SET_ORDER)) {
+	      $insertion = preg_replace($mailVerf,'<a href="mailto:'.$array[0][0].'">'.$array[0][0].'</a>',$string);
+
+        /*echo "<pre>";
+        print_r ($array);
+        echo "</pre>";
+        exit();*/
+
+	    }elseif(preg_match_all($tweetVerif,$string,$array,PREG_SET_ORDER)) {
+	      $insertion = preg_replace($tweetVerif,'<a href="recherche.php">'.$array[0][0].'</a>',$string);
+
+	    }elseif(preg_match_all($verifUrl,$string,$array,PREG_SET_ORDER)){
+	      $insertion = preg_replace($verifUrl,'<a href="'.$array[0][0].'">'.$array[0][0].'</a>',$string);
+
 	    }else{
 	      $insertion = $insertion['contenu'];
-	    }array_push($MesTab, $insertion);
+      //  $insertion =$insertion['pseudo'];
+      //  $insertion =$insertion['creeLE'];
+      //  $insertion =$insertion['id'];
+	    }
+      /*$MesTab[$nb][0] = $crpar;
+      $MesTab[$nb][3] = $string;*/
+    //  $nb++;
+      array_push($MesTab, $insertion);
   }
+
   $smarty->assign('lesContenus', $MesTab);
+  //condition pour rester sur la page 1 , de ne pas aller en - quelquechose
   if(($_GET['page']-1) <= 0) {
     $smarty->assign('prec', $_GET['page']);
   }else{

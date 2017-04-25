@@ -9,7 +9,7 @@ if (isset($_POST['message']) && !empty($_POST['message'])) {
         $prep = $pdo->prepare($query);
         $prep->bindValue(1, $_POST['message']);
         $prep->bindValue(2, $maintenant);
-        $prep->bindValue(3, $id_user);
+        $prep->bindValue(3, $user_id);
         $prep->execute();
 
 }

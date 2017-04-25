@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-17 12:23:43
+/* Smarty version 3.1.30, created on 2017-04-25 21:40:09
   from "C:\wamp64\www\micro_blog_Smarty\vue\index.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58f4b3cf67bb45_75248197',
+  'unifunc' => 'content_58ffc239776422_08002020',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ad60672551e25674a489955e4cd29decace25240' => 
     array (
       0 => 'C:\\wamp64\\www\\micro_blog_Smarty\\vue\\index.tpl',
-      1 => 1492429197,
+      1 => 1493156406,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58f4b3cf67bb45_75248197 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58ffc239776422_08002020 (Smarty_Internal_Template $_smarty_tpl) {
 if (!is_callable('smarty_modifier_date_format')) require_once 'C:\\wamp64\\www\\micro_blog_Smarty\\vendor\\smarty\\plugins\\modifier.date_format.php';
 if (isset($_smarty_tpl->tpl_vars['connecte']->value) && $_smarty_tpl->tpl_vars['connecte']->value == true) {?>
   <p>
@@ -32,8 +32,8 @@ if (isset($_smarty_tpl->tpl_vars['connecte']->value) && $_smarty_tpl->tpl_vars['
       <?php }?>>
           <div class="col-sm-10">
               <div class="form-group">
-                  <textarea id="message" name="message" class="form-control" placeholder="Message"><?php if (isset($_smarty_tpl->tpl_vars['tab']->value)) {
-echo $_smarty_tpl->tpl_vars['tab']->value;
+                  <textarea id="message" name="message" class="form-control" placeholder="Message"><?php if (isset($_smarty_tpl->tpl_vars['inst']->value)) {
+echo $_smarty_tpl->tpl_vars['inst']->value;
 }?></textarea>
               </div>
           </div>
@@ -51,28 +51,30 @@ echo $_smarty_tpl->tpl_vars['tab']->value;
     </div>
   </p>
 <?php }
-if (isset($_smarty_tpl->tpl_vars['lesContenus']->value) && !empty($_smarty_tpl->tpl_vars['lesContenus']->value)) {?>
-  <!-- 1er boucle pour les elements de la base -->
+$_smarty_tpl->_assignInScope('nb', 0);
+?>
   <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['lesContenus']->value, 'con', false, 'IdTab');
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['lesContenus']->value, 'con');
 if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['IdTab']->value => $_smarty_tpl->tpl_vars['con']->value) {
+foreach ($_from as $_smarty_tpl->tpl_vars['con']->value) {
 ?>
     <!-- affichage de la base-->
     <blockquote>
       <b><?php echo $_smarty_tpl->tpl_vars['con']->value;?>
-</b> , <i>auteur : </i> <?php echo $_smarty_tpl->tpl_vars['con']->value;?>
- <br>le : <?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['con']->value,"%A, %B %e, %Y");?>
+</b> , <i>auteur : </i> <?php echo $_smarty_tpl->tpl_vars['con']->value[0];?>
+ <br>le : <?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['con']->value[2],"%A, %B %e, %Y");?>
 
 
       <!-- Si user connecte alors on afficher les boutons de suppression de modification !-->
       <?php if (isset($_smarty_tpl->tpl_vars['connecte']->value) && $_smarty_tpl->tpl_vars['connecte']->value == 1) {?>
-          <a href="index.php?idDel=<?php echo $_smarty_tpl->tpl_vars['IdTab']->value+1;?>
+          <a href="index.php?idDel=<?php echo $_smarty_tpl->tpl_vars['con']->value[0];?>
 " class="bout"><button class="btn btn-danger btn-sm">Del</button></a>
-          <a href="index.php?id=<?php echo $_smarty_tpl->tpl_vars['IdTab']->value+1;?>
+          <a href="index.php?id=<?php echo $_smarty_tpl->tpl_vars['con']->value[0];?>
 " class="bout"><button class="btn btn-default btn-sm">Edit</button></a>
       <?php }?>
     </blockquote>
+    <?php $_smarty_tpl->_assignInScope('nb', $_smarty_tpl->tpl_vars['nb']->value+1);
+?>
   <?php
 }
 } else {
@@ -84,7 +86,6 @@ foreach ($_from as $_smarty_tpl->tpl_vars['IdTab']->value => $_smarty_tpl->tpl_v
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 ?>
 
-<?php }?>
 
 <!-- pagination -->
 <div id="pagination">
